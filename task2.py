@@ -16,19 +16,26 @@ def koch_segment(length: float, level: int) -> None:
 
 
 def koch_snowflake(length: float, level: int) -> None:
-    for _ in range(level):
+    for _ in range(3):
         koch_segment(length, level)
         turtle.right(120)
 
 
 def main() -> None:
+    try:
+        level = int(input("Enter recursion level (0, 1, 2, 3, ...): "))
+        if level < 0:
+            raise ValueError
+    except ValueError:
+        print("Value is not correct. Recursion level might be ≥ 0.")
+        return
     turtle.setup(width=800, height=800)
     turtle.speed(0)
     turtle.penup()
     turtle.goto(-250, 150)
     turtle.pendown()
 
-    koch_snowflake(500, 3)
+    koch_snowflake(500, level)
 
     turtle.done()
 
