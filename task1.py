@@ -19,7 +19,7 @@ def move_files_to_dist(files: list[Path], dest_path: Path) -> None:
         dest_abs_path = (dest_path / x.suffix.replace(".", "")).absolute()
         if not dest_abs_path.exists():
             dest_abs_path.mkdir(parents=True)
-        dest_abs_file = dest_abs_path/ filename
+        dest_abs_file = dest_abs_path / filename
         shutil.copy(x, dest_abs_file)
 
 
